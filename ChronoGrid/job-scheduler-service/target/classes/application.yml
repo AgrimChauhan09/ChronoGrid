@@ -1,0 +1,13 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: job-scheduler-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chronogrid
+
+logging:
+  level:
+    com.agrim.jobscheduler: INFO

@@ -1,0 +1,16 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: coordinator-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chronogrid
+
+coordinator:
+  poll-interval-ms: 1000
+
+logging:
+  level:
+    com.agrim.coordinator: INFO

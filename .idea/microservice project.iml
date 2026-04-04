@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/watcher-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/worker-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChronoGrid/common/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChronoGrid/coordinator-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChronoGrid/exchange-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChronoGrid/gateway-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChronoGrid/job-scheduler-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChronoGrid/queue-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChronoGrid/scheduler-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChronoGrid/watcher-service/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChronoGrid/worker-service/src/main/java" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:6.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-mongodb:4.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:3.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:2.0.9" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:2.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-web:6.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:10.1.16" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:3.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:3.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:6.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:6.1.1" level="project" />
+  </component>
+</module>

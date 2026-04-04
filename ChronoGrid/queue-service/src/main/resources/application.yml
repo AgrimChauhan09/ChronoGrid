@@ -1,0 +1,16 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: queue-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chronogrid
+
+queue:
+  capacity: 1000
+
+logging:
+  level:
+    com.agrim.queueservice: INFO

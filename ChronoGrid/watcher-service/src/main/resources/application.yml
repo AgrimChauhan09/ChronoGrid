@@ -1,0 +1,17 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: watcher-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chronogrid
+
+watcher:
+  timeout-threshold-seconds: 300
+  poll-interval-ms: 30000
+
+logging:
+  level:
+    com.agrim.watcher: INFO

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/ChronoGrid/common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ChronoGrid/coordinator-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ChronoGrid/exchange-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ChronoGrid/gateway-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ChronoGrid/job-scheduler-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ChronoGrid/queue-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ChronoGrid/scheduler-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ChronoGrid/watcher-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ChronoGrid/worker-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/coordinator-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/exchange-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/job-scheduler-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/queue-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/scheduler-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/watcher-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/watcher-service/watcher-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/worker-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/worker-service/worker-service/src/main/java" charset="UTF-8" />
+  </component>
+</project>

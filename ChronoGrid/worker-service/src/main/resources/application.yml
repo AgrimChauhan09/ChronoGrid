@@ -1,0 +1,17 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: worker-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chronogrid
+
+worker:
+  max-concurrent-jobs: 5
+  instance-id: worker-1
+
+logging:
+  level:
+    com.agrim.worker: INFO

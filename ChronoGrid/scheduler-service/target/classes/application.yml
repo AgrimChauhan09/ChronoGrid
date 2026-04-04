@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: scheduler-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chronogrid
+
+scheduler:
+  instance-id: scheduler-instance-1
+
+logging:
+  level:
+    com.agrim.scheduler: INFO
