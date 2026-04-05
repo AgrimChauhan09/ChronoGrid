@@ -1,0 +1,9 @@
+com\agrim\worker\controller\WorkerController.class
+com\agrim\worker\model\WorkerDocument$WorkerDocumentBuilder.class
+com\agrim\worker\repository\WorkerRepository.class
+com\agrim\worker\model\WorkerStats$WorkerStatsBuilder.class
+com\agrim\worker\service\WorkerService.class
+com\agrim\worker\model\WorkerDocument.class
+com\agrim\worker\config\WorkerConfig.class
+com\agrim\worker\WorkerApplication.class
+com\agrim\worker\model\WorkerStats.class

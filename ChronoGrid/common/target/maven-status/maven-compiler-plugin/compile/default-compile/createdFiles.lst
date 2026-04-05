@@ -1,0 +1,16 @@
+com\agrim\common\dto\JobResponse.class
+com\agrim\common\model\WorkerInfo.class
+com\agrim\common\dto\JobRequest.class
+com\agrim\common\model\JobStatus.class
+com\agrim\common\model\WorkerInfo$WorkerInfoBuilder.class
+com\agrim\common\model\Job.class
+com\agrim\common\dto\JobResponse$JobResponseBuilder.class
+com\agrim\common\registry\JobRegistry.class
+com\agrim\common\shutdown\GracefulShutdownHandler.class
+com\agrim\common\queue\SimpleJobQueue.class
+com\agrim\common\loadbalancer\LoadBalancer.class
+com\agrim\common\model\WorkerInfo$WorkerStatus.class
+com\agrim\common\dto\JobRequest$JobRequestBuilder.class
+com\agrim\common\queue\QueueStats$QueueStatsBuilder.class
+com\agrim\common\model\Job$JobBuilder.class
+com\agrim\common\queue\QueueStats.class

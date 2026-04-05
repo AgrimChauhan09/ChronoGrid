@@ -27,7 +27,7 @@ public class GatewayController {
 
     @RequestMapping("/**")
     public ResponseEntity<String> route(HttpServletRequest request,
-                                        @RequestBody(required = false) Object body) {
+            @RequestBody(required = false) Object body) {
         String path = request.getRequestURI();
         HttpMethod method = HttpMethod.valueOf(request.getMethod());
 

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
-import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -32,6 +31,10 @@ public class CoordinatorService {
     private final RestTemplate restTemplate;
 
     private static final String QUEUE_DEQUEUE_URL = "http://localhost:8085/queue/dequeue";
+
+    // FIX ADDED: Re-queue karne ke liye naya URL add kiya hai (Queue Service ka)
+    private static final String QUEUE_ENQUEUE_URL = "http://localhost:8085/queue/enqueue";
+
     private static final String WORKER_EXECUTE_URL = "http://%s:%d/workers/execute";
 
     private final AtomicLong totalDispatched = new AtomicLong(0);
@@ -48,6 +51,7 @@ public class CoordinatorService {
     @Scheduled(fixedDelay = 1000)
     public void coordinate() {
         if (loadBalancer.workerCount() == 0) {
+            log.info("Polling queue... but waiting for workers to register.");
             return;
         }
 
@@ -58,6 +62,10 @@ public class CoordinatorService {
             Optional<WorkerInfo> worker = loadBalancer.selectLeastLoaded();
             if (worker.isEmpty()) {
                 log.warn("No available worker — re-queuing job {}", job.getId());
+
+                // FIX ADDED: Job hawa mein gayab na ho, isliye usko wapas queue mein push kar rahe hain
+                requeueJob(job);
+
                 return;
             }
 
@@ -71,6 +79,8 @@ public class CoordinatorService {
         try {
             return restTemplate.getForObject(QUEUE_DEQUEUE_URL, Job.class);
         } catch (Exception e) {
+            // FIX ADDED: Error ko silently ignore karne ki bajay ab hum exact error reason print karenge
+            log.error("Failed to fetch from queue (Is Queue Service running?): {}", e.getMessage());
             return null;
         }
     }
@@ -95,6 +105,16 @@ public class CoordinatorService {
         } catch (Exception e) {
             log.error("Failed to dispatch job {} to worker {}: {}", job.getId(), worker.getWorkerId(), e.getMessage());
             totalFailed.incrementAndGet();
+        }
+    }
+
+    // FIX ADDED: Ye naya method hai jo Job ko queue mein wapas daalne ka kaam karega
+    private void requeueJob(Job job) {
+        try {
+            restTemplate.postForObject(QUEUE_ENQUEUE_URL, job, Void.class);
+            log.info("Successfully re-queued job {}", job.getId());
+        } catch (Exception e) {
+            log.error("CRITICAL: Failed to re-queue job {}. Error: {}", job.getId(), e.getMessage());
         }
     }
 

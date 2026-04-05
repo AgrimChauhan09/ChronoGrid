@@ -1,0 +1,6 @@
+com\agrim\watcher\config\WatcherConfig.class
+com\agrim\watcher\model\WatcherDocument$WatcherDocumentBuilder.class
+com\agrim\watcher\WatcherApplication.class
+com\agrim\watcher\model\WatcherDocument.class
+com\agrim\watcher\service\WatcherService.class
+com\agrim\watcher\repository\WatcherRepository.class

@@ -1,0 +1,6 @@
+com\agrim\queueservice\QueueServiceApplication.class
+com\agrim\queueservice\repository\QueueItemRepository.class
+com\agrim\queueservice\controller\QueueController.class
+com\agrim\queueservice\model\QueueItemDocument.class
+com\agrim\queueservice\service\QueueService.class
+com\agrim\queueservice\model\QueueItemDocument$QueueItemDocumentBuilder.class

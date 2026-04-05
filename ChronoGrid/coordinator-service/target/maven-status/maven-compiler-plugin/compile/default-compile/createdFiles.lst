@@ -1,0 +1,9 @@
+com\agrim\coordinator\CoordinatorApplication.class
+com\agrim\coordinator\model\CoordinatorStats$CoordinatorStatsBuilder.class
+com\agrim\coordinator\model\CoordinatorStats.class
+com\agrim\coordinator\repository\CoordinatorRepository.class
+com\agrim\coordinator\controller\CoordinatorController.class
+com\agrim\coordinator\model\CoordinatorDocument.class
+com\agrim\coordinator\model\CoordinatorDocument$CoordinatorDocumentBuilder.class
+com\agrim\coordinator\config\CoordinatorConfig.class
+com\agrim\coordinator\service\CoordinatorService.class

@@ -1,0 +1,6 @@
+com\agrim\gateway\GatewayApplication.class
+com\agrim\gateway\config\GatewayConfig.class
+com\agrim\gateway\model\ServiceRoute$ServiceRouteBuilder.class
+com\agrim\gateway\service\GatewayService.class
+com\agrim\gateway\model\ServiceRoute.class
+com\agrim\gateway\controller\GatewayController.class

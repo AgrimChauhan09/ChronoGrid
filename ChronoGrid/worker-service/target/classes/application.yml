@@ -12,6 +12,10 @@ worker:
   max-concurrent-jobs: 5
   instance-id: worker-1
 
+# Ye wali line missing thi! 👇
+coordinator:
+  url: http://localhost:8086
+
 logging:
   level:
     com.agrim.worker: INFO
