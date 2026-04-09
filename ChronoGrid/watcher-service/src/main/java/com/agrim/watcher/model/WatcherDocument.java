@@ -11,7 +11,6 @@ import java.time.Instant;
 
 /**
  * WatcherDocument — audit record of watcher interventions.
- * Maps to pkg/watcher/structs.go in the Go project.
  */
 @Data
 @Builder

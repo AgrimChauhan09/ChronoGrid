@@ -5,7 +5,6 @@ import lombok.Data;
 
 /**
  * CoordinatorStats — metrics for the coordinator.
- * Maps to pkg/worker-queue-coordinator/coordinator_stats.go in the Go project.
  */
 @Data
 @Builder

@@ -6,9 +6,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
+/*
  * JobRegistry — tracks all known job types and their handlers.
- * Maps to pkg/job-registry in the Go project.
  */
 @Component
 public class JobRegistry {

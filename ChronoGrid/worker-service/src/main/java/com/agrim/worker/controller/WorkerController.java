@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * WorkerController — exposes endpoints for coordinator to dispatch jobs to this worker.
- * Maps to cmd/worker/main.go HTTP handlers.
  */
 @RestController
 @RequestMapping("/workers")

@@ -5,7 +5,6 @@ import lombok.Data;
 
 /**
  * ExchangeStats — metrics for the exchange service.
- * Maps to pkg/exchange/exchange_stats.go in the Go project.
  */
 @Data
 @Builder

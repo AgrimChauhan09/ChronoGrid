@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 /**
  * JobSchedulerService — orchestrates job lifecycle from submission to completion.
  * Persists jobs to MongoDB, forwards them to the queue service.
- * Maps to cmd/job_scheduler/main.go in the Go project.
  */
 @Service
 public class JobSchedulerService {

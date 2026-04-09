@@ -16,10 +16,9 @@ import java.time.Instant;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
+/*
  * CoordinatorService — polls the queue and dispatches jobs to available workers.
  * Uses LoadBalancer for worker selection.
- * Maps to pkg/worker-queue-coordinator/coordinator.go and helpers.go in the Go project.
  */
 @Service
 public class CoordinatorService {

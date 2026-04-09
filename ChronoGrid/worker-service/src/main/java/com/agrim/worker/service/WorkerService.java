@@ -8,20 +8,21 @@ import com.agrim.worker.repository.WorkerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * WorkerService — executes jobs asynchronously on a thread pool.
  * Reports status back to the job-scheduler service.
- * Maps to pkg/worker/worker.go and helpers.go in the Go project.
  */
 @Service
 public class WorkerService {
@@ -41,7 +42,17 @@ public class WorkerService {
     @Value("${worker.instance-id:#{T(java.util.UUID).randomUUID().toString()}}")
     private String workerId;
 
+    // FIX ADDED: Worker ko apna port pata hona chahiye taaki wo Coordinator ko bata sake
+//    @Value("${server.port:8082}")
+//    private int port;
+
+    private final int port = 8082;
+
     private static final String JOB_STATUS_URL = "http://localhost:8087/jobs/%s/status";
+
+    // FIX ADDED: Coordinator ka URL jahan par registration request bhejni hai
+    // Dhyan de: Agar tere CoordinatorController mein path /coordinator/workers/register hai, toh usko update kar lena
+    private static final String COORDINATOR_REGISTER_URL = "http://localhost:8086/coordinator/workers/register";
 
     public WorkerService(WorkerRepository workerRepository, RestTemplate restTemplate) {
         this.workerRepository = workerRepository;
@@ -75,7 +86,8 @@ public class WorkerService {
 
     private void performWork(Job job) throws InterruptedException {
         log.info("Executing job type: {} with payload: {}", job.getType(), job.getPayload());
-        Thread.sleep(500);
+        // Fake work delay
+        Thread.sleep(2000);
     }
 
     private void reportStatus(String jobId, JobStatus status) {
@@ -101,7 +113,10 @@ public class WorkerService {
                 .build();
     }
 
+    // FIX ADDED: @EventListener lagaya taaki Spring Boot chalu hote hi ye method automatically run ho!
+    @EventListener(ApplicationReadyEvent.class)
     public void registerSelf() {
+        // 1. Apne Local MongoDB me save karo (Jo tune pehle kiya tha)
         WorkerDocument doc = WorkerDocument.builder()
                 .workerId(workerId)
                 .host("localhost")
@@ -111,6 +126,18 @@ public class WorkerService {
                 .lastHeartbeatAt(Instant.now())
                 .build();
         workerRepository.save(doc);
-        log.info("Worker {} registered", workerId);
+
+        // FIX ADDED: 2. Coordinator (8086) ko API Call marke batao ki "Main zinda hu!"
+        Map<String, Object> workerInfo = new HashMap<>();
+        workerInfo.put("workerId", workerId);
+        workerInfo.put("host", "localhost");
+        workerInfo.put("port", port); // Coordinator ko port pata hona chahiye kaam bhejne ke liye
+
+        try {
+            restTemplate.postForEntity(COORDINATOR_REGISTER_URL, workerInfo, Void.class);
+            log.info("SUCCESS: Worker {} registered with Coordinator at {}", workerId, COORDINATOR_REGISTER_URL);
+        } catch (Exception e) {
+            log.error("ERROR: Failed to register with Coordinator. Is Coordinator running on 8086? Error: {}", e.getMessage());
+        }
     }
 }

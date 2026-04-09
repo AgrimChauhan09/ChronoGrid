@@ -10,7 +10,6 @@ import java.util.Map;
 
 /**
  * ExchangeController — HTTP interface for publishing events and registering subscribers.
- * Maps to cmd/exchange/main.go HTTP handlers.
  */
 @RestController
 @RequestMapping("/exchange")

@@ -15,7 +15,6 @@ import java.util.List;
 /**
  * SchedulerService — loads active cron schedules and fires them.
  * Only fires if this instance is the elected leader.
- * Maps to pkg/scheduler/scheduler.go and cron.go in the Go project.
  */
 @Service
 public class SchedulerService {

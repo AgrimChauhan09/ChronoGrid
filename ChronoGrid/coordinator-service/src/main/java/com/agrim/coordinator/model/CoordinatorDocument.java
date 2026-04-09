@@ -11,7 +11,6 @@ import java.time.Instant;
 
 /**
  * CoordinatorDocument — audit log of dispatch decisions.
- * Maps to pkg/worker-queue-coordinator/structs.go in the Go project.
  */
 @Data
 @Builder

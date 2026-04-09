@@ -12,7 +12,6 @@ import java.util.Map;
 /**
  * JobController — REST API for submitting and monitoring jobs.
  * This is the primary client-facing API of the ChronoGrid system.
- * Maps to cmd/job_scheduler/main.go HTTP handlers.
  */
 @RestController
 @RequestMapping("/jobs")

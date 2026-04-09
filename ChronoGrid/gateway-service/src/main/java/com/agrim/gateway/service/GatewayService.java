@@ -3,6 +3,7 @@ package com.agrim.gateway.service;
 import com.agrim.gateway.model.ServiceRoute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
-
 /**
  * GatewayService — resolves service routes and proxies requests.
- * Maps to pkg/gateway/gw.go in the Go project.
  */
 @Service
 public class GatewayService {
@@ -34,11 +33,24 @@ public class GatewayService {
                 .findFirst();
     }
 
-    public ResponseEntity<String> forward(String targetUrl, HttpMethod method, Object body) {
-        log.info("Forwarding {} request to {}", method, targetUrl);
-        if (body != null && (method == HttpMethod.POST || method == HttpMethod.PUT)) {
-            return restTemplate.postForEntity(targetUrl, body, String.class);
+    public ResponseEntity<String> forward(String path, HttpMethod method, Object body) {
+        Optional<ServiceRoute> routeOpt = resolveRoute(path);
+
+        if (routeOpt.isEmpty()) {
+            log.warn("No route found for path: {}", path);
+            return ResponseEntity.status(404).body("Route not found for path: " + path);
         }
-        return restTemplate.getForEntity(targetUrl, String.class);
+
+        String fullTargetUrl = routeOpt.get().getTargetBaseUrl() + path;
+
+        log.info("Forwarding {} request to {}", method, fullTargetUrl);
+
+        try {
+            HttpEntity<Object> requestEntity = new HttpEntity<>(body);
+            return restTemplate.exchange(fullTargetUrl, method, requestEntity, String.class);
+        } catch (Exception e) {
+            log.error("Failed to forward request to {}: {}", fullTargetUrl, e.getMessage());
+            return ResponseEntity.status(500).body("Error forwarding request to backend service.");
+        }
     }
 }

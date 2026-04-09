@@ -11,7 +11,6 @@ import java.time.Instant;
 
 /**
  * ScheduleDocument — MongoDB document for a registered cron schedule.
- * Maps to pkg/scheduler/structs.go in the Go project.
  */
 @Data
 @Builder

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * QueueController — REST endpoints for queue operations.
- * Maps to cmd/queue_service/main.go HTTP handlers.
  */
 @RestController
 @RequestMapping("/queue")

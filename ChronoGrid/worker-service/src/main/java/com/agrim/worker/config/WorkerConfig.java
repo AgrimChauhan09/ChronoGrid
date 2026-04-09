@@ -9,7 +9,6 @@ import java.util.concurrent.Executor;
 
 /**
  * WorkerConfig — configures the async thread pool for concurrent job execution.
- * Maps to the goroutine pool concept in pkg/worker/worker.go.
  */
 @Configuration
 public class WorkerConfig {

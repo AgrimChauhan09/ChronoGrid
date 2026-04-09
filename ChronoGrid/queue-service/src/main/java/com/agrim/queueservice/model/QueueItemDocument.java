@@ -11,7 +11,6 @@ import java.time.Instant;
 
 /**
  * QueueItemDocument — MongoDB-persisted queue entry for durability.
- * Maps to pkg/queue/structs.go in the Go project.
  */
 @Data
 @Builder

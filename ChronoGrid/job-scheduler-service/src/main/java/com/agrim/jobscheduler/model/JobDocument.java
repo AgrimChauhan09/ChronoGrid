@@ -13,7 +13,6 @@ import java.util.Map;
 
 /**
  * JobDocument — persisted MongoDB record for every submitted job.
- * This is the source of truth for job state across the system.
  */
 @Data
 @Builder

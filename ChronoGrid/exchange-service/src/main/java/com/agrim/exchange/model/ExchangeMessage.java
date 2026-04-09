@@ -10,7 +10,6 @@ import java.util.Map;
 
 /**
  * ExchangeMessage — an event routed through the exchange service.
- * Maps to pkg/exchange/structs.go in the Go project.
  */
 @Data
 @Builder

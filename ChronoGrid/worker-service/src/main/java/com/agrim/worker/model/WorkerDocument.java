@@ -11,7 +11,6 @@ import java.time.Instant;
 
 /**
  * WorkerDocument — MongoDB document representing this worker instance.
- * Maps to pkg/worker/structs.go in the Go project.
  */
 @Data
 @Builder

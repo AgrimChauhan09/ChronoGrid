@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 /**
  * ServiceRoute — defines how gateway maps a path prefix to a backend service.
- * Maps to pkg/gateway/structs.go in the Go project.
  */
 @Data
 @Builder

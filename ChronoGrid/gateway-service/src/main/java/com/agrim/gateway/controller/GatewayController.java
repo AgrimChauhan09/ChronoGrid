@@ -1,6 +1,5 @@
 package com.agrim.gateway.controller;
 
-import com.agrim.gateway.model.ServiceRoute;
 import com.agrim.gateway.service.GatewayService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpMethod;
@@ -8,15 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Optional;
-
 /**
  * GatewayController — catches all inbound requests and routes them.
- * Maps to pkg/gateway/gw.go in the Go project.
  */
 @RestController
-@RequestMapping("/api")
 public class GatewayController {
 
     private final GatewayService gatewayService;
@@ -25,19 +19,17 @@ public class GatewayController {
         this.gatewayService = gatewayService;
     }
 
-    @RequestMapping("/**")
+    @RequestMapping("/api")
     public ResponseEntity<String> route(HttpServletRequest request,
-            @RequestBody(required = false) Object body) {
+                                        @RequestBody(required = false) Object body) {
+
         String path = request.getRequestURI();
-        HttpMethod method = HttpMethod.valueOf(request.getMethod());
-
-        Optional<ServiceRoute> route = gatewayService.resolveRoute(path);
-
-        if (route.isEmpty()) {
-            return ResponseEntity.notFound().build();
+        if (path.startsWith("/api")) {
+            path = path.substring(4);
         }
 
-        String targetUrl = route.get().getTargetBaseUrl() + path;
-        return gatewayService.forward(targetUrl, method, body);
+        HttpMethod method = HttpMethod.valueOf(request.getMethod());
+
+        return gatewayService.forward(path, method, body);
     }
 }

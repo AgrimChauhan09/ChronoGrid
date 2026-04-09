@@ -5,7 +5,6 @@ import lombok.Data;
 
 /**
  * WorkerStats — runtime metrics for a worker.
- * Maps to pkg/worker/worker_stats.go in the Go project.
  */
 @Data
 @Builder

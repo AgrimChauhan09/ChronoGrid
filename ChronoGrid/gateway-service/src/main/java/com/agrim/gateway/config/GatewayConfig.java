@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * GatewayConfig — registers all known backend service routes.
- * Maps to pkg/gateway/structs.go route definitions.
  */
 @Configuration
 public class GatewayConfig {

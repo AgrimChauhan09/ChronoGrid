@@ -3,12 +3,10 @@ package com.agrim.common.shutdown;
 import jakarta.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
 /**
  * GracefulShutdownHandler — handles clean shutdown of each service.
- * Maps to pkg/shutdown/shutdown.go in the Go project.
  * Spring calls @PreDestroy on context close (SIGTERM / SIGINT).
  */
 @Component

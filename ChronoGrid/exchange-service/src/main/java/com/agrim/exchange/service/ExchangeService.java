@@ -16,7 +16,6 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * ExchangeService — routes events between services without Apache Kafka.
  * Subscribers register their callback URL; exchange POSTs the message to them.
- * Maps to pkg/exchange/exchange.go and helpers.go in the Go project.
  */
 @Service
 public class ExchangeService {

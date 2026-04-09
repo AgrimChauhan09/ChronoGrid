@@ -6,9 +6,8 @@ import com.agrim.coordinator.service.CoordinatorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-/**
+/*
  * CoordinatorController — manages worker registration and exposes metrics.
- * Maps to cmd/coordinator/main.go HTTP handlers.
  */
 @RestController
 @RequestMapping("/coordinator")
