@@ -25,6 +25,7 @@ The system is divided into focused, single-responsibility microservices. Here is
 4. **Coordinator Service (Port: 8086):** The Manager. It runs every 1 second, pulls jobs from the Queue, checks the Load Balancer for the freest Worker (Least-Loaded strategy), and assigns the job.
 5. **Worker Service (Port: 8082):** The Executor. It receives the job, updates the status to `RUNNING`, performs the actual business logic, and finally updates the status to `SUCCESS` (or `FAILED`).
 
+```text
 +-------------------------------------------------------+
 |                   CLIENT / POSTMAN                    |
 +-------------------------------------------------------+
@@ -76,7 +77,6 @@ The system is divided into focused, single-responsibility microservices. Here is
              | - Set SUCCESS  |     | - Set SUCCESS  |     | - Set SUCCESS  |
              +----------------+     +----------------+     +----------------+
 
-
 ==================== BACKGROUND FAULT TOLERANCE & CRON ====================
 
 +-----------------------------+                 +-----------------------------+
@@ -85,6 +85,7 @@ The system is divided into focused, single-responsibility microservices. Here is
 |   (RUNNING > 5 mins)        |                 | - Scans DB for due CRON jobs|
 | - Sends RETRY to Scheduler  | <---(Writes)----| - Submits job to Scheduler  |
 +-----------------------------+                 +-----------------------------+
+```
 
 ### Background Services (For Reliability)
 * **Watcher Service (Port: 8083):** The Security Guard. It continuously scans the database. If a job is stuck in `RUNNING` for more than 5 minutes (e.g., Worker crashed), it auto-retries the job.
