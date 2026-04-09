@@ -2,16 +2,16 @@
 
 **ChronoGrid** is a highly scalable, fault-tolerant, and distributed microservices-based job scheduling system. Think of it as an enterprise-level background task manager. It accepts tasks (like sending emails or processing data), queues them, assigns them to the least-loaded worker, and ensures they are executed successfully—even if a server crashes.
 
-Unlike traditional setups, ChronoGrid intentionally avoids heavy external message brokers like Kafka or RabbitMQ. Instead, it relies on a custom, thread-safe in-memory `LinkedBlockingQueue` backed by MongoDB for persistence.
+ChronoGrid intentionally avoids heavy external message brokers like Kafka or RabbitMQ. Instead, it relies on a custom, thread-safe in-memory `LinkedBlockingQueue` backed by MongoDB for persistence.
 
 ---
 
 ##  Tech Stack
-- **Language:** Java (JDK 17/21)
+- **Language:** Java
 - **Framework:** Spring Boot (Microservices Architecture)
 - **Database:** MongoDB
 - **Build Tool:** Maven
-- **Inter-service Communication:** REST APIs (RestTemplate)
+- **Inter-service Communication:** REST APIs
 
 ---
 
@@ -110,15 +110,15 @@ Open your terminal in the root folder of the project and run:
 ```bash
 mvn clean install -DskipTests
 ```
-> # Step 3: Start the Services (Strict Order)
-> Microservices depend on each other. Run the main application files in your IDE in this exact sequence:
-> 
-> - **QueueServiceApplication** (Port: 8085)
-> - **JobSchedulerApplication** (Port: 8087)
-> - **CoordinatorApplication** (Port: 8086)
-> - **WorkerApplication** (Port: 8082) - Watch the Coordinator console to confirm the worker registers successfully.
-> - **GatewayApplication** (Port: 8089)
-# MongoDB Collections Breakdown
+ ### Step 3: Start the Services (Strict Order)
+ Microservices depend on each other. Run the main application files in your IDE in this exact sequence:
+ 
+- **QueueServiceApplication** (Port: 8085)
+- **JobSchedulerApplication** (Port: 8087)
+- **CoordinatorApplication** (Port: 8086)
+- **WorkerApplication** (Port: 8082) - Watch the Coordinator console to confirm the worker registers successfully.
+- **GatewayApplication** (Port: 8089)
+### MongoDB Collections Breakdown
 Once running, ChronoGrid auto-generates these collections in your `chronogrid` database:
 
 - **jobs**: The main collection. Stores the state (`PENDING`, `QUEUED`, `RUNNING`, `SUCCESS`) and payload of every job.
